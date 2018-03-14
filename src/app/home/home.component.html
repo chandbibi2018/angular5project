@@ -1,0 +1,27 @@
+<div class="container color-dark">
+  <div class="col">
+    <p>Add a bucket list item</p>
+  </div>
+  <div class="col">
+      <p>Your bucket list ({{ itemCount}}) </p>
+    </div>
+</div>
+<div class="container color-light" [@goals]="goals.length">
+    <div class="col">
+      <p class="sm">Use this form below to add a new bucket list goal. What do you want to do?</p>
+
+      <form>
+        <input type="text" class="txt" name="item" placeholder="Life goal.." [(ngModel)]="goalText">
+        <input type="submit" class="btn" [value]="btnTxt" (click)="addItem()">
+      </form>
+
+    </div>
+    <div class="col">
+       <!--let goal = creates a local variable that will be available in the template.
+          of goals means that we’ll be iterating over the goals iterable that should be made available in our component.
+          The * character before ngFor creates a parent template. It’s a shortcut to the following syntax: template=”ngFor let item of items”.-->
+        <p class="life-container" *ngFor="let goal of goals">
+          {{ goal }}
+        </p>
+      </div>
+  </div>
